@@ -136,4 +136,19 @@ function Class() {
   );
 }
 
+const footerStyles = {
+  footer: {
+    backgroundColor: '#007bff',
+    padding: '1rem',
+    textAlign: 'center',
+    color: '#ffffff',
+    position: 'relative',
+    bottom: 0,
+    width: '100%',
+  },
+  text: {
+    margin: 0,
+  }
+};
+
 export default Class;

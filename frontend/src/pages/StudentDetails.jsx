@@ -316,7 +316,7 @@ const Student = () => {
         , [])
 
     const navigate = useNavigate()
-    const role  = localStorage.getItem("role")
+    const role = localStorage.getItem("role")
     const Header = () => (
         <header style={styles.header}>
             <div style={styles.logo}>
@@ -325,11 +325,11 @@ const Student = () => {
             </div>
             <nav style={styles.navLinks}>
                 <button onClick={() => {
-                    if(role === "principle")
+                    if (role === "principle")
                         navigate("/principle/viewStudents")
-                    else if(role === "admin")
+                    else if (role === "admin")
                         navigate("/admin/viewstudents")
-                    else if(role === "student")
+                    else if (role === "student")
                         navigate("/student")
                 }} style={styles.backButton}>
                     Back
@@ -911,12 +911,27 @@ const Student = () => {
                         </tr>
                     </tbody>
                 </table>
-
-
-
             </form>
+            <footer style={footerStyles.footer}>
+                <p style={footerStyles.text}>© 2024 NIEPID. All rights reserved.</p>
+            </footer>
         </div>
     );
+};
+
+const footerStyles = {
+    footer: {
+        backgroundColor: '#007bff',
+        padding: '1rem',
+        textAlign: 'center',
+        color: '#ffffff',
+        position: 'relative',
+        bottom: 0,
+        width: '100%',
+    },
+    text: {
+        margin: 0,
+    }
 };
 
 export default Student;

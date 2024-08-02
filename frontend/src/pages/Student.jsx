@@ -113,8 +113,11 @@ function Student() {
                     </form>
                 </div>
             </div>
-            <footer style={styles.footer}>
+            {/* <footer style={styles.footer}>
                 <p>&copy; 2024 Student Dashboard. All rights reserved.</p>
+            </footer> */}
+            <footer style={footerStyles.footer}>
+                <p style={footerStyles.text}>© 2024 NIEPID. All rights reserved.</p>
             </footer>
         </div>
     );
@@ -233,5 +236,20 @@ const styles = {
         color: '#fff',
     },
 };
+
+const footerStyles = {
+    footer: {
+      backgroundColor: '#007bff',
+      padding: '1rem',
+      textAlign: 'center',
+      color: '#ffffff',
+      position: 'relative',
+      bottom: 0,
+      width: '100%',
+    },
+    text: {
+      margin: 0,
+    }
+  };
 
 export default Student;

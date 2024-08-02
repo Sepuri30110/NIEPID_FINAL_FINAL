@@ -23,7 +23,7 @@ export default function Home() {
     localStorage.removeItem("year")
     localStorage.removeItem("term")
     localStorage.removeItem("studentId")
-    
+
     const teacherId = localStorage.getItem("userId")
     console.log("hiiii")
     axios.get('http://localhost:4000/teacher/getStudents', {
@@ -33,13 +33,13 @@ export default function Home() {
         "Content-Type": "application/json",
         authorization: `Bearer ${localStorage.getItem("token")}`,
       }
-    }, { withCredentials: true }) 
+    }, { withCredentials: true })
       .then(res => {
         console.log(res.data.students)
         setStudents(res.data.students)
-        
+
       })
-      .catch(err=>{
+      .catch(err => {
         console.log(err.response)
       })
 
@@ -136,7 +136,9 @@ export default function Home() {
             <p>No students registered under teacher</p>
           )}
         </main>
-        <Footer />
+        <footer style={footerStyles.footer}>
+          <p style={footerStyles.text}>© 2024 NIEPID. All rights reserved.</p>
+        </footer>
       </div>
     </>
   );
@@ -242,4 +244,19 @@ const styles = {
     transition: "background-color 0.3s, transform 0.3s",
     marginLeft: "0.5rem",
   },
+};
+
+const footerStyles = {
+  footer: {
+    backgroundColor: '#007bff',
+    padding: '1rem',
+    textAlign: 'center',
+    color: '#ffffff',
+    position: 'relative',
+    bottom: 0,
+    width: '100%',
+  },
+  text: {
+    margin: 0,
+  }
 };

@@ -81,26 +81,26 @@ const StudentPerformance = () => {
     const role = localStorage.getItem("role")
     console.log(role);
 
-    const Header =()=>(
+    const Header = () => (
         <header style={styles.header}>
-          <div style={styles.logo}>
-            <img src={image} alt="Logo" style={styles.logoImage} />
-            <span style={styles.logoLabel}>NIEPID</span>
-          </div>
-          <button onClick={() => {
+            <div style={styles.logo}>
+                <img src={image} alt="Logo" style={styles.logoImage} />
+                <span style={styles.logoLabel}>NIEPID</span>
+            </div>
+            <button onClick={() => {
                 const role = localStorage.getItem("role");
-                if(role === "student")
+                if (role === "student")
                     navigate('/student')
-                if(role === "teacher")
+                if (role === "teacher")
                     navigate('/teacher')
-                if(role === "principle")
+                if (role === "principle")
                     navigate('/principle/viewstudents')
-                if(role === "admin")
+                if (role === "admin")
                     navigate('/admin/viewstudents')
             }} style={styles.backButton}>Back</button>
         </header>
     )
-    
+
     const Footer = () => (
         <footer style={styles.footer}>&copy; 2024 Student History Portal</footer>
     );
@@ -116,23 +116,23 @@ const StudentPerformance = () => {
                     Authorization: `Bearer ${localStorage.getItem("token")}`
                 }
             })
-            .then(res => {
-                // console.log(res)
-                if (res.status != 200) {
-                    toast.error("Student is still in 1st Year", {
-                        position: "top-right",
-                    });
-                    navigate('/teacher')
-                }
-                console.log(res)
-                setStudentInfo(res.data)
-                
-            })
-            .catch(err => {
-                console.log(err)
-                console.log(err.response)
-            })
-        } 
+                .then(res => {
+                    // console.log(res)
+                    if (res.status != 200) {
+                        toast.error("Student is still in 1st Year", {
+                            position: "top-right",
+                        });
+                        navigate('/teacher')
+                    }
+                    console.log(res)
+                    setStudentInfo(res.data)
+
+                })
+                .catch(err => {
+                    console.log(err)
+                    console.log(err.response)
+                })
+        }
         else if (role === "principle") {
             console.log(role)
             console.log(id)
@@ -157,7 +157,7 @@ const StudentPerformance = () => {
                 .catch(err => {
                     console.log(err.response)
                 })
-        } 
+        }
         else if (role === "admin") {
             axios.get("http://localhost:4000/admin/student/viewHistory", {
                 headers: {
@@ -179,7 +179,7 @@ const StudentPerformance = () => {
                 .catch(err => {
                     //console.log(err.response)
                 })
-        }else if(role === "student"){
+        } else if (role === "student") {
             console.log("student")
             const id1 = localStorage.getItem('regNo')
             console.log(id1)
@@ -545,7 +545,9 @@ const StudentPerformance = () => {
                     <p>No data available for the selected year.</p>
                 )}
             </div>
-            <Footer />
+            <footer style={footerStyles.footer}>
+                <p style={footerStyles.text}>© 2024 NIEPID. All rights reserved.</p>
+            </footer>
             <style>
                 {`
                     .student-info, .year-selector {
@@ -602,6 +604,21 @@ const StudentPerformance = () => {
             </style>
         </div>
     );
+};
+
+const footerStyles = {
+    footer: {
+        backgroundColor: '#007bff',
+        padding: '1rem',
+        textAlign: 'center',
+        color: '#ffffff',
+        position: 'relative',
+        bottom: 0,
+        width: '100%',
+    },
+    text: {
+        margin: 0,
+    }
 };
 
 export default StudentPerformance

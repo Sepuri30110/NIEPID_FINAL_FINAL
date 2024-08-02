@@ -71,8 +71,26 @@ function Register() {
           Already have an account ?<Link to="/login"> Login</Link>
         </span>
       </form>
+      <footer style={footerStyles.footer}>
+        <p style={footerStyles.text}>© 2024 NIEPID. All rights reserved.</p>
+      </footer>
     </div>
   );
 }
+
+const footerStyles = {
+  footer: {
+    backgroundColor: '#007bff',
+    padding: '1rem',
+    textAlign: 'center',
+    color: '#ffffff',
+    position: 'relative',
+    bottom: 0,
+    width: '100%',
+  },
+  text: {
+    margin: 0,
+  }
+};
 
 export default Register;

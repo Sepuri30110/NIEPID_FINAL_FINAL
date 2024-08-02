@@ -34,13 +34,13 @@ const Front = () => {
         navigate(path);
     };
 
-    const Header =()=>(
+    const Header = () => (
         <header style={styles.header}>
-          <div style={styles.logo}>
-            <img src={image} alt="Logo" style={styles.logoImage} />
-            <span style={styles.logoLabel}>NIEPID</span>
-          </div>
-          <button onClick={() => navigate('/teacher/term')} style={styles.button}>Back</button>
+            <div style={styles.logo}>
+                <img src={image} alt="Logo" style={styles.logoImage} />
+                <span style={styles.logoLabel}>NIEPID</span>
+            </div>
+            <button onClick={() => navigate('/teacher/term')} style={styles.button}>Back</button>
         </header>
     )
 
@@ -145,9 +145,9 @@ const Front = () => {
             {/* <label style={{alignSelf:'center',fontSize:'35px',fontFamily:'cursive',fontWeight:'bold'}}>{(percent.personalPercent + percent.academicPercent + percent.occupationalPercent + percent.socialPercent)/4 > 80 ? "Pass" : "Fail"}</label>
             <br/> */}
             <div style={styles.box}>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <label>Enter your comments for Year</label>
-                    <label>Year Percent : {(percent.personalPercent + percent.academicPercent + percent.occupationalPercent + percent.socialPercent)/4}</label>
+                    <label>Year Percent : {(percent.personalPercent + percent.academicPercent + percent.occupationalPercent + percent.socialPercent) / 4}</label>
                 </div>
                 <textarea
                     name="comments1"
@@ -233,8 +233,11 @@ const Front = () => {
                 Submit
             </button>
 
-            <footer style={styles.footer}>
+            {/* <footer style={styles.footer}>
                 <p style={styles.footerText}>&copy; 2024 Functional Assessment. All rights reserved.</p>
+            </footer> */}
+            <footer style={footerStyles.footer}>
+                <p style={footerStyles.text}>© 2024 NIEPID. All rights reserved.</p>
             </footer>
         </div>
     );
@@ -310,7 +313,7 @@ const styles = {
         borderRadius: "5px",
         cursor: "pointer",
         transition: "background-color 0.3s, transform 0.3s",
-      },
+    },
     submitButton: {
         padding: '12px 25px',
         marginBottom: '10px',
@@ -359,6 +362,21 @@ const styles = {
     footerText: {
         margin: '0',
     },
+};
+
+const footerStyles = {
+    footer: {
+        backgroundColor: '#007bff',
+        padding: '1rem',
+        textAlign: 'center',
+        color: '#ffffff',
+        position: 'relative',
+        bottom: 0,
+        width: '100%',
+    },
+    text: {
+        margin: 0,
+    }
 };
 
 export default Front;

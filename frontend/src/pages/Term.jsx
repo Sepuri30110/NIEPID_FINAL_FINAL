@@ -7,7 +7,7 @@ const Term = () => {
   const navigate = useNavigate();
   const [sections, setSections] = useState([]);
   const [years, setYears] = useState([]);
-  
+
 
   useEffect(() => {
     const fetchStudentData = async () => {
@@ -25,14 +25,14 @@ const Term = () => {
         localStorage.setItem("currYear", student.currYear);
         localStorage.setItem("currSection", student.currSection);
         const arr = []
-        student.section.map((inst)=>{
+        student.section.map((inst) => {
           arr.push(inst.sec)
         })
         setSections(arr)
       } catch (err) {
         console.error("Error fetching student data", err.response);
       }
-      
+
     };
 
     fetchStudentData();
@@ -60,7 +60,7 @@ const Term = () => {
       const data = res.data;
       const secIndex = data.section.findIndex(sec => sec.sec === section);
       const yr = []
-      data.section[secIndex].yearReport.map(year=>{
+      data.section[secIndex].yearReport.map(year => {
         yr.push(year.year)
       })
       setYears(yr)
@@ -80,19 +80,19 @@ const Term = () => {
 
   };
 
-  const Header =()=>(
-      <header style={styles.header}>
-        <div style={styles.logo}>
-          <img src={image} alt="Logo" style={styles.logoImage} />
-          <span style={styles.logoLabel}>NIEPID</span>
-        </div>
-        <button onClick={() => navigate('/teacher')} style={styles.button}>Back</button>
-      </header>
+  const Header = () => (
+    <header style={styles.header}>
+      <div style={styles.logo}>
+        <img src={image} alt="Logo" style={styles.logoImage} />
+        <span style={styles.logoLabel}>NIEPID</span>
+      </div>
+      <button onClick={() => navigate('/teacher')} style={styles.button}>Back</button>
+    </header>
   )
 
   return (
     <div style={styles.container}>
-      <Header/>
+      <Header />
       <div style={styles.hero}>
         <h1 style={styles.heroTitle}>Terms</h1>
       </div>
@@ -108,6 +108,9 @@ const Term = () => {
           ))}
         </div>
       </div>
+      <footer style={footerStyles.footer}>
+        <p style={footerStyles.text}>© 2024 NIEPID. All rights reserved.</p>
+      </footer>
     </div>
   );
 };
@@ -186,6 +189,21 @@ const styles = {
     borderRadius: '5px',
     cursor: 'pointer',
   },
+};
+
+const footerStyles = {
+  footer: {
+    backgroundColor: '#007bff',
+    padding: '1rem',
+    textAlign: 'center',
+    color: '#ffffff',
+    position: 'relative',
+    bottom: 0,
+    width: '100%',
+  },
+  text: {
+    margin: 0,
+  }
 };
 
 export default Term;

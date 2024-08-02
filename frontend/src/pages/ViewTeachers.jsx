@@ -16,7 +16,7 @@ const TeacherTable = () => {
 
     // Fetch the role from localStorage
     const role = localStorage.getItem('role');
-    role === "admin" ?console.log("calling as admin"):console.log("calling as pricipal")
+    role === "admin" ? console.log("calling as admin") : console.log("calling as pricipal")
 
     const fetchData = async () => {
         try {
@@ -24,15 +24,19 @@ const TeacherTable = () => {
                 headers: {
                     'Content-Type': 'application/json',
                     authorization: `Bearer ${localStorage.getItem("token")}`
-                }},
-                {withCredentials: true
-            }) : await axios.get('http://localhost:4000/principle/viewTeacher', {
-                headers: {
-                    'Content-Type': 'application/json',
-                    authorization: `Bearer ${localStorage.getItem("token")}`
-                }},
-                {withCredentials: true
-            })
+                }
+            },
+                {
+                    withCredentials: true
+                }) : await axios.get('http://localhost:4000/principle/viewTeacher', {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        authorization: `Bearer ${localStorage.getItem("token")}`
+                    }
+                },
+                    {
+                        withCredentials: true
+                    })
             setTeacherDetails(response.data.data);
         } catch (error) {
             console.error('Error fetching teacher details:', error.message);
@@ -63,8 +67,10 @@ const TeacherTable = () => {
                     headers: {
                         'Content-Type': 'application/json',
                         authorization: `Bearer ${localStorage.getItem("token")}`
-                    }},
-                {withCredentials: true
+                    }
+                },
+                {
+                    withCredentials: true
                 }
             );
 
@@ -133,94 +139,97 @@ const TeacherTable = () => {
             </div>
             <nav style={styles.navLinks}>
                 <button onClick={() => {
-                    if(role === "principle")
+                    if (role === "principle")
                         navigate('/principle')
-                    else if(role === "admin")
+                    else if (role === "admin")
                         navigate('/admin')
-                    }} style={styles.backButton}>
+                }} style={styles.backButton}>
                     Back
                 </button>
             </nav>
         </header>
     );
-    
+
 
 
     return (
         <div>
-            <Header/>
-        <div style={styles.container}>
-            <h1 style={styles.heading}>Teacher Details</h1>
-            <table style={styles.table}>
-                <thead>
-                    <tr>
-                        {headers.map((header) => (
-                            <th style={styles.th} key={header}>{header}</th>
-                        ))}
-                    </tr>
-                </thead>
-                <tbody>
-                    {teacherDetails.map((teacher, index) => (
-                        <tr key={teacher.teacherId} style={index % 2 === 0 ? styles.evenRow : styles.oddRow}>
-                            <td style={styles.td}>
-                                <input
-                                    type="text"
-                                    name="teacherId"
-                                    value={editMode === teacher.teacherId ? editedTeacher.teacherId : teacher.teacherId}
-                                    onChange={handleInputChange}
-                                    style={styles.input}
-                                    readOnly={editMode !== teacher.teacherId}
-                                />
-                            </td>
-                            <td style={styles.td}>
-                                <input
-                                    type="text"
-                                    name="teacherName"
-                                    value={editMode === teacher.teacherId ? editedTeacher.teacherName : teacher.teacherName}
-                                    onChange={handleInputChange}
-                                    style={styles.input}
-                                    readOnly={editMode !== teacher.teacherId}
-                                />
-                            </td>
-                            <td style={styles.td}>
-                                <input
-                                    type="text"
-                                    name="email"
-                                    value={editMode === teacher.teacherId ? editedTeacher.email : teacher.email}
-                                    onChange={handleInputChange}
-                                    style={styles.input}
-                                    readOnly={editMode !== teacher.teacherId}
-                                />
-                            </td>
-                            <td style={styles.td}>
-                                <input
-                                    type="text"
-                                    name="teacherMNo"
-                                    value={editMode === teacher.teacherId ? editedTeacher.teacherMNo : teacher.teacherMNo}
-                                    onChange={handleInputChange}
-                                    style={styles.input}
-                                    readOnly={editMode !== teacher.teacherId}
-                                />
-                            </td>
-                            <td style={styles.td}>
-                                <input
-                                    type="text"
-                                    name="classId"
-                                    value={editMode === teacher.teacherId ? editedTeacher.classId : teacher.classId}
-                                    onChange={handleInputChange}
-                                    style={styles.input}
-                                    readOnly={editMode !== teacher.teacherId}
-                                />
-                            </td>
-                            {role === "admin" ? <td style={styles.td}>
-                                {renderActionButton(teacher)}
-                            </td> : null}
-
+            <Header />
+            <div style={styles.container}>
+                <h1 style={styles.heading}>Teacher Details</h1>
+                <table style={styles.table}>
+                    <thead>
+                        <tr>
+                            {headers.map((header) => (
+                                <th style={styles.th} key={header}>{header}</th>
+                            ))}
                         </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
+                    </thead>
+                    <tbody>
+                        {teacherDetails.map((teacher, index) => (
+                            <tr key={teacher.teacherId} style={index % 2 === 0 ? styles.evenRow : styles.oddRow}>
+                                <td style={styles.td}>
+                                    <input
+                                        type="text"
+                                        name="teacherId"
+                                        value={editMode === teacher.teacherId ? editedTeacher.teacherId : teacher.teacherId}
+                                        onChange={handleInputChange}
+                                        style={styles.input}
+                                        readOnly={editMode !== teacher.teacherId}
+                                    />
+                                </td>
+                                <td style={styles.td}>
+                                    <input
+                                        type="text"
+                                        name="teacherName"
+                                        value={editMode === teacher.teacherId ? editedTeacher.teacherName : teacher.teacherName}
+                                        onChange={handleInputChange}
+                                        style={styles.input}
+                                        readOnly={editMode !== teacher.teacherId}
+                                    />
+                                </td>
+                                <td style={styles.td}>
+                                    <input
+                                        type="text"
+                                        name="email"
+                                        value={editMode === teacher.teacherId ? editedTeacher.email : teacher.email}
+                                        onChange={handleInputChange}
+                                        style={styles.input}
+                                        readOnly={editMode !== teacher.teacherId}
+                                    />
+                                </td>
+                                <td style={styles.td}>
+                                    <input
+                                        type="text"
+                                        name="teacherMNo"
+                                        value={editMode === teacher.teacherId ? editedTeacher.teacherMNo : teacher.teacherMNo}
+                                        onChange={handleInputChange}
+                                        style={styles.input}
+                                        readOnly={editMode !== teacher.teacherId}
+                                    />
+                                </td>
+                                <td style={styles.td}>
+                                    <input
+                                        type="text"
+                                        name="classId"
+                                        value={editMode === teacher.teacherId ? editedTeacher.classId : teacher.classId}
+                                        onChange={handleInputChange}
+                                        style={styles.input}
+                                        readOnly={editMode !== teacher.teacherId}
+                                    />
+                                </td>
+                                {role === "admin" ? <td style={styles.td}>
+                                    {renderActionButton(teacher)}
+                                </td> : null}
+
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+            <footer style={footerStyles.footer}>
+                <p style={footerStyles.text}>© 2024 NIEPID. All rights reserved.</p>
+            </footer>
         </div>
     );
 };
@@ -327,6 +336,21 @@ const styles = {
         border: '1px solid #ddd',
         borderRadius: '4px',
         boxSizing: 'border-box'
+    }
+};
+
+const footerStyles = {
+    footer: {
+        backgroundColor: '#007bff',
+        padding: '1rem',
+        textAlign: 'center',
+        color: '#ffffff',
+        position: 'relative',
+        bottom: 0,
+        width: '100%',
+    },
+    text: {
+        margin: 0,
     }
 };
 

@@ -231,6 +231,9 @@ const PrincipalViewStudents = () => {
                     </tbody>
                 </table>
             </div>
+            <footer style={footerStyles.footer}>
+                <p style={footerStyles.text}>© 2024 NIEPID. All rights reserved.</p>
+            </footer>
         </div>
     );
 };
@@ -356,6 +359,21 @@ const styles = {
         ':hover': {
             backgroundColor: '#e9ecef'
         }
+    }
+};
+
+const footerStyles = {
+    footer: {
+        backgroundColor: '#007bff',
+        padding: '1rem',
+        textAlign: 'center',
+        color: '#ffffff',
+        position: 'relative',
+        bottom: 0,
+        width: '100%',
+    },
+    text: {
+        margin: 0,
     }
 };
 

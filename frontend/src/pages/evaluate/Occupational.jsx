@@ -446,6 +446,9 @@ const Occupational = () => {
                 />
                 <button id="submit" className={classes.button} disabled={true} type="submit">Submit</button>
             </form>
+            <footer style={footerStyles.footer}>
+                <p style={footerStyles.text}>© 2024 NIEPID. All rights reserved.</p>
+            </footer>
         </div>
     );
 };
@@ -484,5 +487,20 @@ const styles = {
         transition: "background-color 0.3s, transform 0.3s",
     },
 };
+
+const footerStyles = {
+    footer: {
+      backgroundColor: '#007bff',
+      padding: '1rem',
+      textAlign: 'center',
+      color: '#ffffff',
+      position: 'relative',
+      bottom: 0,
+      width: '100%',
+    },
+    text: {
+      margin: 0,
+    }
+  };
 
 export default Occupational;
